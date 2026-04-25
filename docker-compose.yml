@@ -1,0 +1,10 @@
+services:
+  taskserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: taskserver
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
