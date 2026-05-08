@@ -6,6 +6,9 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // Habilitar CORS para permitir requisições do navegador
+  app.enableCors();
+
   // Validação Global
   app.useGlobalPipes(
     new ValidationPipe({
@@ -25,7 +28,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag('tasks')
     .build();
-  
+
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
